@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for, flash
-from models import db # Also import your database model here
+from models import db, Drink # Also import your database model here
 
 # Define your routes inside the 'init_routes' function
 # Feel free to rename the routes and functions as you see fit
@@ -16,10 +16,20 @@ def init_routes(app):
 
 
 
-    @app.route('/add', methods=['POST'])
+    @app.route('/add', methods=['POST','GET'])
     def create_item():
         # This route should handle adding a new item to the database.
-        return render_template('index.html', message='Item added successfully')
+        if request.method == 'POST':
+            new_drink = Drink(
+                type=request.form['Type'],
+                brand=request.form['Brand'],
+                sweetness=int(request.form['Sweetness (1-10)']),
+                percentage=float(request.form['ABV %'])
+            )
+            db.session.add(new_drink)
+            db.session.commit()
+            return redirect(url_for('index'))
+        return render_template('add.html', message='Item added successfully')
 
 
 
