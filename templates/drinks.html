@@ -1,8 +1,18 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drink CRUD</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1, h2 { color: #333; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin-bottom: 15px; }
+        form { margin-top: 5px; }
+        input { margin-right: 5px; }
+        button { margin-left: 5px; }
+    </style>
 </head>
 <body>
 
@@ -11,15 +21,15 @@
     <ul>
         {% for drink in items %}
             <li>
-      
-                ({{ drink.type }}, {{ drink.brand }}, Sweetness: {{ drink.sweetness }}, ABV: {{ drink.percentage }}%)
-                
+                {{ drink.type }} — {{ drink.brand }}
+                (Sweetness: {{ drink.sweetness }}, ABV: {{ drink.percentage }}%)
+
                 <!-- Inline Update -->
                 <form action="/update/{{ drink.id }}" method="POST" style="display:inline;">
-                    <input type="text" name="type" placeholder="Type" required>
-                    <input type="text" name="brand" placeholder="Brand">
-                    <input type="number" name="sweetness" placeholder="Sweetness" min="1" max="10">
-                    <input type="number" step="0.1" name="percentage" placeholder="ABV %">
+                    <input type="text" name="type" placeholder="Type" value="{{ drink.type }}" required>
+                    <input type="text" name="brand" placeholder="Brand" value="{{ drink.brand }}">
+                    <input type="number" name="sweetness" placeholder="Sweetness" min="1" max="10" value="{{ drink.sweetness }}">
+                    <input type="number" step="0.1" name="percentage" placeholder="ABV %" value="{{ drink.percentage }}">
                     <button type="submit">Update</button>
                 </form>
 
@@ -39,6 +49,9 @@
         <input type="number" step="0.1" name="percentage" placeholder="ABV %">
         <button type="submit">Create</button>
     </form>
+
+    <p><a href="/upload">Upload Drinks with AI</a></p>
+    <p><a href="/logout">Logout</a></p>
 
 </body>
 </html>

@@ -1,46 +1,61 @@
 from flask import render_template, request, redirect, url_for, flash
-from models import db, Drink # Also import your database model here
-
-# Define your routes inside the 'init_routes' function
-# Feel free to rename the routes and functions as you see fit
-# You may need to use multiple methods such as POST and GET for each route
-# You can use render_template or redirect as appropriate
-# You can also use flash for displaying status messages
+from models import db, Drink
 
 def init_routes(app):
 
+    # --- LIST ALL DRINKS ---
     @app.route('/', methods=['GET'])
     def get_items():
-        # This route should retrieve all items from the database and display them on the page.
-        return render_template('index.html', message='Displaying all items')
+        drinks = Drink.query.all()
+        return render_template('drinks.html', items=drinks)
 
-
-
-    @app.route('/add', methods=['POST','GET'])
+    # --- CREATE NEW DRINK ---
+    @app.route('/add', methods=['POST'])
     def create_item():
-        # This route should handle adding a new item to the database.
-        if request.method == 'POST':
+        try:
             new_drink = Drink(
-                type=request.form['Type'],
-                brand=request.form['Brand'],
-                sweetness=int(request.form['Sweetness (1-10)']),
-                percentage=float(request.form['ABV %'])
+                type=request.form['type'],        # match input name in drinks.html
+                brand=request.form.get('brand'),
+                sweetness=request.form.get('sweetness'),
+                percentage=request.form.get('percentage')
             )
+            # convert numeric fields safely
+            if new_drink.sweetness:
+                new_drink.sweetness = int(new_drink.sweetness)
+            if new_drink.percentage:
+                new_drink.percentage = float(new_drink.percentage)
+
             db.session.add(new_drink)
             db.session.commit()
-            return redirect(url_for('index'))
-        return render_template('add.html', message='Item added successfully')
+            flash("Drink added successfully!", "success")
+        except Exception as e:
+            flash(f"Error adding drink: {e}", "danger")
 
+        return redirect(url_for('get_items'))
 
+    # --- UPDATE EXISTING DRINK ---
+    @app.route('/update/<int:drink_id>', methods=['POST'])
+    def update_item(drink_id):
+        drink = Drink.query.get_or_404(drink_id)
+        try:
+            drink.type = request.form['type']
+            drink.brand = request.form.get('brand')
+            drink.sweetness = request.form.get('sweetness')
+            drink.percentage = request.form.get('percentage')
 
-    @app.route('/update', methods=['POST'])
-    def update_item():
-        # This route should handle updating an existing item identified by the given ID.
-        return render_template('index.html', message=f'Item updated successfully')
+            if drink.sweetness:
+                drink.sweetness = int(drink.sweetness)
+            if drink.percentage:
+                drink.percentage = float(drink.percentage)
 
+            db.session.commit()
+            flash("Drink updated successfully!", "success")
+        except Exception as e:
+            flash(f"Error updating drink: {e}", "danger")
 
+        return redirect(url_for('get_items'))
 
-    @app.route('/delete', methods=['POST'])
-    def delete_item():
-        # This route should handle deleting an existing item identified by the given ID.
-        return render_template('index.html', message=f'Item deleted successfully')
+    # --- DELETE DRINK ---
+    @app.route('/delete/<int:drink_id>', methods=['POST'])
+    def delete_item(drink_id):
+        drink = Drink.query.get_or_404(drink)
