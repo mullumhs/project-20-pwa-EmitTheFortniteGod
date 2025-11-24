@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, session
 from models import db
 from routes import init_routes
 import os

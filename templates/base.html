@@ -11,8 +11,17 @@
   <header>
     <h1>Bar Manager</h1>
     <nav>
+      
       <a href="{{ url_for('list_drinks') }}">Drinks</a>
       <a href="{{ url_for('ai_upload') }}">AI Upload</a>
+      <a href="{{ url_for('poster') }}">Poster</a>
+      {% if session.get('user') %}
+        <a href="{{ url_for('logout') }}">Logout</a>
+      {% else %}
+        <a href="{{ url_for('login') }}">Login</a>
+      {% endif %}
+      
+
     </nav>
   </header>
   <main>
