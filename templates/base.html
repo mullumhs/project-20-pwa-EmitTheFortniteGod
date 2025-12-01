@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>{% block title %}Bar Manager{% endblock %}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>Pourtrait — Luxury Drink Poster Generator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-  <header>
-    <h1>Bar Manager</h1>
-    <nav>
-      
-      <a href="{{ url_for('list_drinks') }}">Drinks</a>
-      <a href="{{ url_for('ai_upload') }}">AI Upload</a>
-      <a href="{{ url_for('poster') }}">Poster</a>
-      {% if session.get('user') %}
-        <a href="{{ url_for('logout') }}">Logout</a>
-      {% else %}
-        <a href="{{ url_for('login') }}">Login</a>
-      {% endif %}
-      
-
-    </nav>
+  <header class="site-header">
+<div class="brand">
+  <img src="{{ url_for('static', filename='logo.png') }}" alt="Pourtrait logo" class="logo">
+  <div class="brand-text">
+    <span class="title">Pourtrait</span>
+    <span class="subtitle">Luxury posters for the perfect pour!</span>
+  </div>
+</div>
+    <button class="print-btn" onclick="window.print()">Save as PDF</button>
   </header>
-  <main>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <div class="flash-container">
-          {% for category, message in messages %}
-            <div class="flash {{ category }}">{{ message }}</div>
-          {% endfor %}
-        </div>
-      {% endif %}
-    {% endwith %}
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <h1>Every pour tells a story</h1>
+      <p>Generate a premium, staff-ready drink poster from your stock list.</p>
+    </div>
+  </section>
+
+  <main class="page">
     {% block content %}{% endblock %}
   </main>
-  <footer>
-    <small>&copy; 2025 Bar Tools</small>
+
+  <footer class="site-footer">
+    <small>© 2025 Pourtrait. Crafted for bars that care about the details.</small>
   </footer>
+
+  <!-- Ambient glow accents -->
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
 </body>
 </html>

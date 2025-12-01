@@ -1,22 +1,17 @@
-from flask import Flask, session
-from models import db
-from routes import init_routes
-import os
-import openai
+from flask import Flask
+import models
+import views
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'dev'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///collection.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = "dev-secret-key"
 
-db.init_app(app)
-
-openai.api_key = os.getenv("OPENAI_API_KEY")
-
+# init DB
 with app.app_context():
-    db.create_all()
+    models.init_db()
+    models.seed_db()
 
-init_routes(app, openai)
+# register routes
+views.register_routes(app)
 
 if __name__ == "__main__":
     app.run(debug=True)
