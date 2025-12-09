@@ -1,0 +1,34 @@
+{% if b %}
+<div class="tile">
+  <div class="tile-head">
+    <span class="tile-name">{{ b.name }}</span>
+    <span class="tile-meta">{{ b.style }} • {{ b.abv }}% ABV{% if b.mid_strength %} • Mid strength{% endif %}</span>
+  </div>
+  <div class="tile-body">
+    <span class="tile-sub">{{ b.brewery }} — {{ b.country }}</span>
+    {% if b.notes %}<span class="tile-notes">{{ b.notes }}</span>{% endif %}
+  </div>
+</div>
+{% elif w %}
+<div class="tile">
+  <div class="tile-head">
+    <span class="tile-name">{{ w.name }}</span>
+    <span class="tile-meta">{{ w.varietal }} • {{ w.region }} • {{ w.vintage }}</span>
+  </div>
+  <div class="tile-body">
+    <span class="tile-sub">{{ w.producer }} — {{ w.country }} • {{ w.abv }}% ABV • {{ w.sweetness|capitalize }}</span>
+    {% if w.notes %}<span class="tile-notes">{{ w.notes }}</span>{% endif %}
+  </div>
+</div>
+{% elif s %}
+<div class="tile">
+  <div class="tile-head">
+    <span class="tile-name">{{ s.name }}</span>
+    <span class="tile-meta">{{ s.category }}{% if s.subtype %} • {{ s.subtype }}{% endif %} • {{ s.abv }}% ABV</span>
+  </div>
+  <div class="tile-body">
+    <span class="tile-sub">{{ s.brand }} — {{ s.country }}</span>
+    {% if s.flavor_notes %}<span class="tile-notes">{{ s.flavor_notes }}{% if s.aging %} • Aged: {{ s.aging }}{% endif %}</span>{% endif %}
+  </div>
+</div>
+{% endif %}

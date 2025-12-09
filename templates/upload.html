@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="h1">Upload or paste your drinks</h1>
+<form method="post" class="form-card">
+  <label>Paste one item per line (beer, wine, spirit)</label>
+  <textarea name="drink_list" rows="14" placeholder="Example:
+Peroni Nastro Azzurro
+Guinness Draught
+Cloudy Bay Sauvignon Blanc
+Hendrick's
+Don Julio Reposado" required></textarea>
+  <button class="btn-primary" type="submit">Process</button>
+  <p class="muted small">We’ll fuzzy‑match misspellings and near matches automatically.</p>
+</form>
+{% endblock %}

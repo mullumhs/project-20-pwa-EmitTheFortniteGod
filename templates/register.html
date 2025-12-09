@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="h1">Create your account</h1>
+<form method="post" class="form-card">
+  <label>Email</label>
+  <input type="email" name="email" required placeholder="manager@yourbar.au">
+  <label>Password</label>
+  <input type="password" name="password" required placeholder="Choose a strong password">
+  <button class="btn-primary" type="submit">Register</button>
+</form>
+{% endblock %}

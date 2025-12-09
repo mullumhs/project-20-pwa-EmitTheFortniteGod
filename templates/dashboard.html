@@ -1,41 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <title>Pourtrait — Luxury Drink Poster Generator</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
-  <header class="site-header">
-<div class="brand">
-  <img src="{{ url_for('static', filename='logo.png') }}" alt="Pourtrait logo" class="logo">
-  <div class="brand-text">
-    <span class="title">Pourtrait</span>
-    <span class="subtitle">Luxury posters for the perfect pour!</span>
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="h1">Dashboard</h1>
+<div class="grid">
+  <div class="card">
+    <h2 class="h2">Your stock</h2>
+    <p class="muted">Items saved: {{ drink_count }}</p>
+    <div class="actions">
+      <a class="btn-secondary" href="{{ url_for('main.upload') }}">Upload/Paste List</a>
+      <a class="btn-secondary" href="{{ url_for('main.edit_stock') }}">Edit Stock</a>
+      <a class="btn-primary" href="{{ url_for('main.posters') }}">Generate Posters</a>
+    </div>
+  </div>
+  <div class="card">
+    <h2 class="h2">Unknowns</h2>
+    <p class="muted">Export the items we don’t have data for yet.</p>
+    <a class="btn-tertiary" href="{{ url_for('main.unknowns_txt') }}">Download unknowns.txt</a>
   </div>
 </div>
-    <button class="print-btn" onclick="window.print()">Save as PDF</button>
-  </header>
-
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <h1>Every pour tells a story</h1>
-      <p>Generate a premium, staff-ready drink poster from your stock list.</p>
-    </div>
-  </section>
-
-  <main class="page">
-    {% block content %}{% endblock %}
-  </main>
-
-  <footer class="site-footer">
-    <small>© 2025 Pourtrait. Crafted for bars that care about the details.</small>
-  </footer>
-
-  <!-- Ambient glow accents -->
-  <div class="ambient ambient-a"></div>
-  <div class="ambient ambient-b"></div>
-</body>
-</html>
+{% endblock %}
