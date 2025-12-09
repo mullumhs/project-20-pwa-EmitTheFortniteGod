@@ -67,7 +67,11 @@ body {
   z-index: 10;
 }
 .brand { display: flex; align-items: center; gap: 12px; }
-.logo { display: block; }
+.logo {
+  height: 60px;   /* adjust to fit your design */
+  width: auto;
+}
+
 .brand-text .title {
   font-family: "Playfair Display", Georgia, serif;
   font-weight: 700; letter-spacing: 1px; font-size: 1.35rem;
