@@ -4,8 +4,8 @@ from models import db, User
 from views import bp as main_bp
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'change-this-to-a-long-random-secret'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///pourtrait.db'
+app.config['SECRET_KEY'] = 'change-this-secret'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///drinks.db'   # database file
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db.init_app(app)
