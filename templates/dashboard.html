@@ -1,20 +1,43 @@
-{% extends 'base.html' %}
+<!-- templates/dashboard.html -->
+{% extends "base.html" %}
 {% block content %}
-<h1 class="h1">Dashboard</h1>
-<div class="grid">
-  <div class="card">
-    <h2 class="h2">Your stock</h2>
-    <p class="muted">Items saved: {{ drink_count }}</p>
-    <div class="actions">
-      <a class="btn-secondary" href="{{ url_for('main.upload') }}">Upload/Paste List</a>
-      <a class="btn-secondary" href="{{ url_for('main.edit_stock') }}">Edit Stock</a>
-      <a class="btn-primary" href="{{ url_for('main.posters') }}">Generate Posters</a>
-    </div>
+<section class="grid-two">
+  <div class="panel">
+    <h2>Your stock lists</h2>
+    <a href="{{ url_for('upload') }}" class="btn outline">Add new stock</a>
+    <ul class="list">
+      {% for s in stocks %}
+        <li>
+          <div>
+            <strong>{{ s.title }}</strong>
+            <span class="muted">Updated: {{ s.updated_at }}</span>
+          </div>
+          <div class="actions">
+            <a class="btn small" href="{{ url_for('poster_preview', stock_id=s.id) }}">Open</a>
+          </div>
+        </li>
+      {% else %}
+        <li class="muted">No stock yet — add your drinks.</li>
+      {% endfor %}
+    </ul>
   </div>
-  <div class="card">
-    <h2 class="h2">Unknowns</h2>
-    <p class="muted">Export the items we don’t have data for yet.</p>
-    <a class="btn-tertiary" href="{{ url_for('main.unknowns_txt') }}">Download unknowns.txt</a>
+  <div class="panel">
+    <h2>Your posters</h2>
+    <ul class="list">
+      {% for p in posters %}
+        <li>
+          <div>
+            <strong>{{ p.title }}</strong>
+            <span class="muted">Updated: {{ p.updated_at }}</span>
+          </div>
+          <div class="actions">
+            <a class="btn small" href="{{ url_for('poster_view', poster_id=p.id) }}">View / Print</a>
+          </div>
+        </li>
+      {% else %}
+        <li class="muted">No posters yet — generate from your stock.</li>
+      {% endfor %}
+    </ul>
   </div>
-</div>
+</section>
 {% endblock %}

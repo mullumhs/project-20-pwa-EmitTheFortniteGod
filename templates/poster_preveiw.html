@@ -1,0 +1,71 @@
+<!-- templates/poster_preview.html -->
+{% extends "base.html" %}
+{% block content %}
+<section class="card">
+  <h1>Preview & refine</h1>
+  <form method="post">
+    <div class="grid-two">
+      <div>
+        <label>Poster title
+          <input type="text" name="poster_title" value="{{ poster_title }}">
+        </label>
+      </div>
+      <div>
+        <label>Sort by
+          <select name="sort_by">
+            <option value="type" {% if sort_by=='type' %}selected{% endif %}>Type</option>
+            <option value="abv" {% if sort_by=='abv' %}selected{% endif %}>ABV</option>
+            <option value="sweetness" {% if sort_by=='sweetness' %}selected{% endif %}>Sweetness</option>
+            <option value="name" {% if sort_by=='name' %}selected{% endif %}>Name</option>
+          </select>
+        </label>
+      </div>
+      <div>
+        <label>Style
+          <select name="style">
+            <option value="classic" {% if style=='classic' %}selected{% endif %}>Classic Gold</option>
+            <option value="deep" {% if style=='deep' %}selected{% endif %}>Deep Noir</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <p class="muted">Edit names to fix unmatched items; we’ll fuzzy-match again.</p>
+    <table class="table classy">
+      <thead>
+        <tr><th>Entered</th><th>Matched</th><th>Type</th><th>ABV</th><th>Sweet/Srength</th><th>Edit name</th></tr>
+      </thead>
+      <tbody>
+        {% for d in drinks %}
+          <tr class="{% if d.unmatched %}warn{% endif %}">
+            <td>{{ d.input }}</td>
+            <td>{% if d.unmatched %}<em>Unmatched</em>{% else %}{{ d.name }}{% endif %}</td>
+            <td>{{ d.type }}</td>
+            <td>{% if d.abv is not none %}{{ '%.1f' % d.abv }}%{% else %}-{% endif %}</td>
+            <td>
+              {% if d.type == 'wine' %}{{ d.sweetness or '-' }}
+              {% elif d.type == 'beer' %}{{ d.strength or '-' }}
+              {% else %}-{% endif %}
+            </td>
+            <td>
+              <input type="text" name="edit_name" value="{{ d.name }}">
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="actions">
+      <button type="submit" class="btn outline">Re-match edits</button>
+    </div>
+  </form>
+
+  <form method="post" action="{{ url_for('poster_save', stock_id=stock_id) }}" class="actions">
+    <input type="hidden" name="poster_title" value="{{ poster_title }}">
+    <input type="hidden" name="sort_by" value="{{ sort_by }}">
+    <input type="hidden" name="style" value="{{ style }}">
+    <button type="submit" class="btn primary">Save poster</button>
+    <a class="btn" href="{{ url_for('dashboard') }}">Back to dashboard</a>
+  </form>
+</section>
+{% endblock %}

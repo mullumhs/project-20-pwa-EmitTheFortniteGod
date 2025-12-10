@@ -1,15 +1,49 @@
-{% extends 'base.html' %}
+<!-- templates/upload.html -->
+{% extends "base.html" %}
 {% block content %}
-<h1 class="h1">Upload or paste your drinks</h1>
-<form method="post" class="form-card">
-  <label>Paste one item per line (beer, wine, spirit)</label>
-  <textarea name="drink_list" rows="14" placeholder="Example:
-Peroni Nastro Azzurro
-Guinness Draught
-Cloudy Bay Sauvignon Blanc
-Hendrick's
-Don Julio Reposado" required></textarea>
-  <button class="btn-primary" type="submit">Process</button>
-  <p class="muted small">We’ll fuzzy‑match misspellings and near matches automatically.</p>
-</form>
+<section class="card">
+  <h1>Add your stock</h1>
+  <form method="post" enctype="multipart/form-data" class="form-grid">
+    <label>Title (optional)
+      <input type="text" name="title" placeholder="Main Bar — Summer">
+    </label>
+    <div class="tabs">
+      <label class="radio">
+        <input type="radio" name="input_mode" value="paste" checked>
+        Paste list
+      </label>
+      <label class="radio">
+        <input type="radio" name="input_mode" value="file">
+        Upload text file (.txt)
+      </label>
+    </div>
+
+    <div data-mode="paste">
+      <label>Paste drinks (one per line)
+        <textarea name="pasted" rows="10" placeholder="Example:&#10;Heineken&#10;Cabernet Sauvignon&#10;Tanqueray"></textarea>
+      </label>
+    </div>
+
+    <div data-mode="file" style="display:none;">
+      <label>Choose file
+        <input type="file" name="file" accept=".txt">
+      </label>
+    </div>
+
+    <button type="submit" class="btn primary">Process stock</button>
+  </form>
+</section>
+
+<script>
+  // simple toggle paste/file
+  const radios = document.querySelectorAll('input[name="input_mode"]');
+  const paste = document.querySelector('[data-mode="paste"]');
+  const file = document.querySelector('[data-mode="file"]');
+  radios.forEach(r => {
+    r.addEventListener('change', () => {
+      if (r.value === 'paste' && r.checked) { paste.style.display = ''; file.style.display = 'none'; }
+      if (r.value === 'file' && r.checked) { file.style.display = ''; paste.style.display = 'none'; }
+    });
+  });
+</script>
 {% endblock %}
