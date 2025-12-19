@@ -1,7 +1,41 @@
-name,category,sweetness,notes
-Cabernet Sauvignon,Red,Dry,Full-bodied red
-Sauvignon Blanc,White,Dry,Herbaceous, citrus
-Pinot Noir,Red,Dry,Light-bodied red
-Chardonnay,White,Off-dry,Buttery, oaked
-Riesling,White,Sweet,Floral, high acidity
-Rosé,Rosé,Off-dry,Fruity and fresh
+name,abv,sweetness,style
+Shiraz,14.5,dry,red
+Cabernet Sauvignon,14,dry,red
+Merlot,13.5,dry,red
+Pinot Noir,13,dry,red
+Malbec,14,dry,red
+Grenache,14,dry,red
+Tempranillo,13.5,dry,red
+Sangiovese,13,dry,red
+Nebbiolo,14,dry,red
+Zinfandel,15,dry,red
+Sauvignon Blanc,12.5,dry,white
+Chardonnay,13,dry,white
+Pinot Grigio,12,dry,white
+Riesling,11,sweet,white
+Gewürztraminer,12,off-dry,white
+Semillon,12.5,dry,white
+Viognier,13.5,dry,white
+Verdelho,12.5,dry,white
+Albariño,12,dry,white
+Grüner Veltliner,12,dry,white
+Moscato,7,sweet,white
+Prosecco,11,off-dry,sparkling
+Champagne,12,dry,sparkling
+Cava,11.5,dry,sparkling
+Sparkling Shiraz,13,off-dry,sparkling
+Rosé,12.5,dry,rose
+White Zinfandel,10,sweet,rose
+Blush Rosé,11,off-dry,rose
+Late Harvest Riesling,9,sweet,dessert
+Botrytis Semillon,10,sweet,dessert
+Ice Wine,9,sweet,dessert
+Fortified Tawny,18,sweet,fortified
+Port,20,sweet,fortified
+Sherry Fino,15,dry,fortified
+Sherry Pedro Ximénez,17,sweet,fortified
+Marsala,18,off-dry,fortified
+Madeira,19,off-dry,fortified
+Orange Wine,13,dry,orange
+Pet-Nat,11,dry,sparkling
+Lambrusco,10,off-dry,sparkling

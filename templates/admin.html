@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Admin – Drink Database</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Category</th>
+        <th>ABV</th>
+        <th>Actions</th>
+    </tr>
+    {% for d in drinks %}
+    <tr>
+        <td>{{ d.name }}</td>
+        <td>{{ d.category }}</td>
+        <td>{{ d.abv }}</td>
+        <td>
+            <a href="/edit/{{ d.id }}">Edit</a> |
+            <a href="/delete/{{ d.id }}" onclick="return confirm('Delete this drink?')">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

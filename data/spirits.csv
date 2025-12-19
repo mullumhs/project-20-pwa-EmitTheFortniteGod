@@ -1,7 +1,45 @@
-name,category,abv,notes
-Tanqueray,Gin,47.3,Juniper-forward
-Jameson,Whiskey,40.0,Smooth Irish whiskey
-Johnnie Walker Black,Scotch,40.0,Blended scotch
-Patrón Silver,Tequila,40.0,Premium blanco tequila
-Grey Goose,Vodka,40.0,French wheat vodka
-Hennessy VS,Cognac,40.0,Classic cognac
+name,abv,style
+Vodka,40,neutral
+Premium Vodka,42,neutral
+Flavoured Vodka,37,flavoured
+Gin,40,botanical
+London Dry Gin,43,botanical
+Navy Strength Gin,57,botanical
+Old Tom Gin,40,botanical
+Pink Gin,37,flavoured
+Whisky,40,oak
+Scotch Whisky,40,smoky
+Single Malt Scotch,43,smoky
+Blended Scotch,40,oak
+Bourbon,45,vanilla
+Rye Whiskey,45,spicy
+Irish Whiskey,40,smooth
+Japanese Whisky,43,oak
+Canadian Whisky,40,smooth
+Rum,37,spiced
+White Rum,37,light
+Dark Rum,40,rich
+Spiced Rum,40,spiced
+Aged Rum,43,oak
+Tequila Blanco,38,agave
+Tequila Reposado,40,agave
+Tequila Añejo,40,agave
+Mezcal,45,smoky
+Brandy,40,fruit
+Cognac,40,oak
+Armagnac,40,oak
+Pisco,40,grape
+Absinthe,68,herbal
+Sambuca,38,anise
+Ouzo,37,anise
+Pastis,45,anise
+Amaro,30,bitter
+Aperol,11,bitter
+Campari,25,bitter
+Limoncello,30,citrus
+Triple Sec,30,citrus
+Cointreau,40,citrus
+Baileys Irish Cream,17,cream
+Kahlúa,20,coffee
+Frangelico,20,nut
+Galliano,42,herbal

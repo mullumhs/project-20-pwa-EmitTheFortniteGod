@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="poster-header">
+    <h2>Staff Reference Guide</h2>
+    <p class="sub">
+        Compiled for <strong>David Steedman</strong>
+    </p>
+    <button onclick="window.print()">Print / Save as PDF</button>
+</div>
+
+<div class="poster">
+    {% for d in drinks %}
+    <div class="drink">
+        <strong>{{ d.name }}</strong><br>
+        {{ d.category | title }}<br>
+        ABV: {{ d.abv }}%<br>
+        {% if d.sweetness %}Sweetness: {{ d.sweetness }}<br>{% endif %}
+        {% if d.strength %}Strength: {{ d.strength }}<br>{% endif %}
+        Style: {{ d.style }}
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

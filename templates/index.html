@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Paste Drink List</h2>
+
+<form method="POST">
+    <textarea name="drinks" rows="12" placeholder="One drink per line (sir please pick them from the database)"></textarea>
+    <br>
+    <button type="submit">Generate Poster</button>
+</form>
+
+{% endblock %}

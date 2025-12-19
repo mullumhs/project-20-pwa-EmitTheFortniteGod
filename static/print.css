@@ -1,0 +1,20 @@
+body {
+    background: white;
+    color: black;
+    font-family: 'Inter', sans-serif;
+}
+
+header, nav, button {
+    display: none;
+}
+
+.drink {
+    border: 1px solid #c6a15b;
+    background: white;
+    color: black;
+}
+
+.drink strong {
+    color: #000;
+    font-family: 'Playfair Display', serif;
+}

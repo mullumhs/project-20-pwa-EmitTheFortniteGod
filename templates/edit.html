@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Edit Drink</h2>
+
+<form method="POST">
+    Name: <input name="name" value="{{ drink.name }}"><br>
+    Category: <input name="category" value="{{ drink.category }}"><br>
+    ABV: <input name="abv" value="{{ drink.abv }}"><br>
+    Sweetness: <input name="sweetness" value="{{ drink.sweetness }}"><br>
+    Strength: <input name="strength" value="{{ drink.strength }}"><br>
+    Style: <input name="style" value="{{ drink.style }}"><br>
+    <button type="submit">Save</button>
+</form>
+
+{% endblock %}

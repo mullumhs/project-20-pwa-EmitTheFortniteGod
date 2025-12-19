@@ -1,8 +1,41 @@
-name,category,abv,strength,notes
-Heineken,Lager,5.0,Mid,Classic pale lager
-Guinness,Stout,4.2,Mid,Irish dry stout
-Asahi Super Dry,Lager,5.2,Mid,Crisp, dry finish
-Stone IPA,IPA,6.9,Heavy,Hoppy, bitter
-Victoria Bitter,Lager,4.9,Mid,Australian staple
-Coopers Pale Ale,Pale Ale,4.5,Mid,Cloudy bottle-conditioned
-XXXX Gold,Lager,3.5,Light,Queensland mid-strength
+name,abv,strength,style
+Carlton Draught,4.6,mid,lager
+Victoria Bitter,4.9,heavy,lager
+Great Northern Super Crisp,3.5,light,lager
+Great Northern Original,4.2,mid,lager
+Tooheys New,4.6,mid,lager
+Tooheys Old,4.4,mid,dark ale
+XXXX Gold,3.5,light,lager
+XXXX Bitter,4.6,mid,lager
+Coopers Pale Ale,4.5,mid,pale ale
+Coopers Sparkling Ale,5.8,heavy,ale
+Coopers Extra Stout,6.3,heavy,stout
+Corona Extra,4.5,light,lager
+Heineken,5.0,mid,lager
+Peroni Nastro Azzurro,5.1,mid,lager
+Asahi Super Dry,5.0,mid,lager
+Kirin Ichiban,5.0,mid,lager
+Sapporo Premium,4.9,mid,lager
+Guinness Draught,4.2,mid,stout
+Guinness Extra Stout,7.5,heavy,stout
+James Squire One Fifty Lashes,4.2,mid,pale ale
+James Squire Hop Thief,4.2,mid,ale
+James Squire Chancer Golden Ale,4.5,mid,golden ale
+Stone & Wood Pacific Ale,4.4,mid,ale
+Balter XPA,5.0,mid,pale ale
+Balter IPA,6.0,heavy,ipa
+Little Creatures Pale Ale,5.2,mid,pale ale
+Little Creatures IPA,6.4,heavy,ipa
+Pirate Life South Coast Pale,4.4,mid,pale ale
+Pirate Life IPA,6.8,heavy,ipa
+Furphy Original,4.4,mid,ale
+Mountain Goat Steam Ale,4.5,mid,ale
+Hahn SuperDry,4.6,mid,lager
+Hahn SuperDry 3.5,3.5,light,lager
+Pure Blonde,4.2,mid,lager
+Cascade Premium Light,2.4,light,lager
+Boags Premium,4.6,mid,lager
+Boags Premium Light,2.7,light,lager
+Carlton Dry,4.5,mid,lager
+Carlton Dry 3.5,3.5,light,lager
+Brookvale Union Ginger Beer,4.0,mid,ginger beer
